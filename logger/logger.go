@@ -7,6 +7,8 @@ import (
 	"os"
 )
 
+var log *zap.SugaredLogger
+
 func InitLogger(logPath string, logLevel string) {
 	hook := lumberjack.Logger{
 		Filename:   logPath, // 日志文件路径
@@ -36,6 +38,6 @@ func InitLogger(logPath string, logLevel string) {
 	)
 
 	l := zap.New(core)
-	logger = l.Sugar()
-	logger.Info("DefaultLogger init success")
+	log = l.Sugar()
+	log.Info("DefaultLogger init success")
 }
